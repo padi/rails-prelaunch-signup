@@ -10,11 +10,13 @@ Feature: Request Invitation
     When I visit the home page
     Then I should see a button "Request Invitation"
 
+  @wip
   Scenario: User views invitation request form
     When I visit the home page
     And I click a button "Request Invitation"
     Then I should see a form with a field "Email"
 
+  @wip
   Scenario: User signs up with valid data
     When I request an invitation with valid user data
     Then I should see a message "Thank You"
@@ -22,6 +24,7 @@ Feature: Request Invitation
     And my account should be unconfirmed
     And I should receive an email with subject "Request Received"
 
+  @wip
   Scenario: User signs up with invalid email
     When I request an invitation with an invalid email
     Then I should see an invalid email message
