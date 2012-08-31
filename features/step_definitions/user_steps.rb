@@ -22,6 +22,11 @@ def create_user
   @user = FactoryGirl.create(:user, email: @visitor[:email])
 end
 
+def create_admin
+  create_user
+  @user.add_role :admin
+end
+
 def delete_user
   @user ||= User.first conditions: {:email => @visitor[:email]}
   @user.destroy unless @user.nil?
@@ -52,6 +57,11 @@ end
 
 Given /^I am logged in$/ do
   create_user
+  sign_in
+end
+
+Given /^I am logged in as an admin$/ do
+  create_admin
   sign_in
 end
 
@@ -129,7 +139,7 @@ When /^I edit my account details$/ do
 end
 
 When /^I look at the list of users$/ do
-  visit '/'
+  visit '/users'
 end
 
 ### THEN ###
