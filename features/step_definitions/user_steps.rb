@@ -1,7 +1,6 @@
 ### UTILITY METHODS ###
 
 def create_visitor
-  # @visitor ||= { :name => "Testy McUserton", :email => "example@example.com" }
   @visitor ||= { :name => "Testy McUserton", :email => "example@example.com",
     :password => "please", :password_confirmation => "please" }
 end
@@ -55,11 +54,6 @@ end
 
 Given /^I am logged in$/ do
   create_user
-  sign_in
-end
-
-Given /^I am logged in as an admin$/ do
-  create_admin
   sign_in
 end
 
@@ -162,7 +156,7 @@ Then /^I see a successful sign in message$/ do
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Thank you"
+  page.should have_content "Thank You"
 end
 
 Then /^I should see an invalid email message$/ do
