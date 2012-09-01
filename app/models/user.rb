@@ -8,12 +8,13 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :opt_in
+  validates_confirmation_of :password
 
   # override Devise method
   # no password is required when the account is created; validate password when the user sets one
   def password_required?
     if !persisted?
-      false
+      !(password != "")
     else
       !password.nil? || !password_confirmation.nil?
     end
