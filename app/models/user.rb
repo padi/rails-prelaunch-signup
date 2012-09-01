@@ -28,4 +28,12 @@ class User < ActiveRecord::Base
   def active_for_authentication?
     confirmed? || confirmation_period_valid?
   end
+
+  private
+
+  def send_welcome_email
+    unless self.email.include?('@example.com') && Rails.env != 'test'
+      UserMailer.welcome_email(self).deliver
+    end
+  end
 end

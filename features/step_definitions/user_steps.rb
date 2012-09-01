@@ -131,7 +131,7 @@ When /^I edit my account details$/ do
 end
 
 When /^I look at the list of users$/ do
-  visit '/users'
+  visit '/'
 end
 
 ### THEN ###
