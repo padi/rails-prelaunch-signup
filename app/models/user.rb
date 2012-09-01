@@ -18,4 +18,14 @@ class User < ActiveRecord::Base
       !password.nil? || !password_confirmation.nil?
     end
   end
+
+  # override Devise method
+  def confirmation_required?
+    false
+  end
+  
+  # override Devise method
+  def active_for_authentication?
+    confirmed? || confirmation_period_valid?
+  end
 end
